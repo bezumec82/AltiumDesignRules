@@ -1,3 +1,7 @@
+This rules was made for rational approach to PCB/SCH design.
+Not for somebody fun or holly war around it.
+If you have some strong objections, you can contact me directly.
+
 #############
 ### Structure
 #############
@@ -24,7 +28,7 @@ multiboard assembly
 		...
 	board 3
 		...
-This makes your design consisten and more easily readable and checkable.
+This makes your design consistent and more easily readable and checkable.
 
 Use strict hierarchy in your design - even power port should be local to the list.
 It is difficult to find all occurences of some signal smeared over several sheets.
@@ -62,15 +66,15 @@ move it to separate list in separate folder.
 ###############
 1) Avoid formats bigger than A3. Divide your design.
 It is inconvenient to read and print designs that utilizes formats bigger than A3.
-Think that A2 is the maximum format that is availible to you 
+Think that A2 is the maximum format that is available to you 
 and use it in case of the extreme necessity.
 
-1.1) Try to decrease formats nomenclature in your design.
-If you used A2 allready, try to avoid of using A4, it is inconsistent design solution.
-It can be approved only in case of very big projects > 10..15 lists.
+	1.1) Try to decrease formats nomenclature in your design.
+	If you used A2 already, try to avoid of using A4, it is inconsistent design solution.
+	It can be approved only in case of very big projects > 10..15 lists.
 
-2) Divide your desing parts using net labels, do not pull lines across all list.
-If you are disigning simple RC filter, make it looks like RC filter, 
+2) Divide your design parts using net labels, do not pull lines across all list.
+If you are designing simple RC filter, make it looks like RC filter, 
 not like a complex tangle of signals.
 If your design simple, making it difficult to read is the sign of insanity.
 Nobody wants to work with insane people.
@@ -82,18 +86,39 @@ If you can't compose draw properly, don't do this work at all.
 ###############
 ### Electronics
 ###############
-5) Avoid to use LDO in your design. 
+1) Avoid to use LDO in your design. 
 It is more than enough modern all in one pulse power supply modules at the market.
 This mean that usage of LDO should be approved by some strong causes.
 
-6) Do not use cristals in your designs. Prefer to use generators.
+2) Do not use crystals in your designs. Prefer to use generators.
 Too long to explain - just follow this rule.
 
-7) Avoid to create new components in your design. Do not inflate nomenclature.
+3) Avoid to create new components in your design. Do not inflate nomenclature.
 Try to utilize what already utilized in company. Look TOM's library.
 
-8) If you want to have some signs in silk - write it in your design directly.
+4) If you want to have some signs in silk - write it in your design directly.
 
+#######
+### PCB
+#######
+1) Provide signals names in silk near connectors.
+It simplifies boards bring up and repair.
 
+	1.1) Provide all signals' names in silk for all connectors for eval boards.
+	Require SCH designer to provide readable abbreviations.
+	Don't make board bring up even more difficult than it is.
+
+2) Always make test points for power signals.
+Most common trouble in electronics is the power supply fault.
+Bare components parts can be used as test points only if they have appropriate size.
+0.65 stepped legs is not an appropriate size.
+	2.1) Provide names for test points.
+	Repairman should use schematics in his/her work, not a pcb pictures.
+
+3) Provide test points for the legacy signals (UART/I2C/SPI...) at the eval stage - 
+don't make board bring up even more difficult than it is.
+
+4) Use jumpers(x-x) and zero resistors(-[R0Ohm]-) for eval boards. 
+Use solder-able line gaps( -<<- ) for production boards.
 
 
