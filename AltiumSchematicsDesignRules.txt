@@ -1,0 +1,99 @@
+#############
+### Structure
+#############
+1) Provide all supplemental documentation necessary to read your design.
+Structure of directory for the project:
+	- Documentation - composite diagrams/prove of concept, other global to the project data
+	- Project directories - directories where separate board project designs reside
+		- Documentation - datasheets mostly
+		- RefDesign - eval's schematics
+		- project files
+	- multiboard files
+Remove 'History' directory from your design - look for Altium settings.
+
+2) Use hierarchical design :
+multiboard assembly
+	board 1
+		main sheet
+			sub sheet 1
+				sub sub sheet 1
+				...
+			sub sheet 2
+			...
+	board 2
+		...
+	board 3
+		...
+This makes your design consisten and more easily readable and checkable.
+
+Use strict hierarchy in your design - even power port should be local to the list.
+It is difficult to find all occurences of some signal smeared over several sheets.
+
+3) Do not create swiss knife components. 
+Divide your components at parts accordingly to its purpose.
+Common guide for this rule :
+	- separate power signals from data signals
+	- separate pwr and gnd signals if there is too many pins for this purpose
+	- separate data/control signals from setup pins (for example RST and SS from UART and I2C)
+
+4) Do not copy components and parts of the design. 
+This is error prone way of design. Man is not a machine, he/she can't duplicate completelly something.
+Use repeat blocks.
+
+5) Do not overcomplicate your design - if your board have one led and one resistor - make it one file only.
+If your design is a shame make it looks like a shame not like something great.
+
+	3.1) Do not overuse/abuse Altium facilities.
+	It means not to use harnesses and nets without necessity. 
+	It makes your design harder to read and understand.
+	Do not divide component that consists of 3..5 signals.
+	Keep everything as simple as possible.
+
+6) One for all resources/entities (for example PU for I2C), 
+should be represented at the main sheet - at the head of your design.
+Common error for hierarchical designs - PU I2C lines in each list where it used.
+
+7) Do not use compile mask for final design.
+If you want to save some components or solutions for further use,
+move it to separate list in separate folder.
+
+###############
+### Readability
+###############
+1) Avoid formats bigger than A3. Divide your design.
+It is inconvenient to read and print designs that utilizes formats bigger than A3.
+Think that A2 is the maximum format that is availible to you 
+and use it in case of the extreme necessity.
+
+1.1) Try to decrease formats nomenclature in your design.
+If you used A2 allready, try to avoid of using A4, it is inconsistent design solution.
+It can be approved only in case of very big projects > 10..15 lists.
+
+2) Divide your desing parts using net labels, do not pull lines across all list.
+If you are disigning simple RC filter, make it looks like RC filter, 
+not like a complex tangle of signals.
+If your design simple, making it difficult to read is the sign of insanity.
+Nobody wants to work with insane people.
+
+3) Avoid to have empty space at the list. This is sign of the bad design.
+Schematics is a draw. Drawing composition is the engineering basics - learn it.
+If you can't compose draw properly, don't do this work at all.
+
+###############
+### Electronics
+###############
+5) Avoid to use LDO in your design. 
+It is more than enough modern all in one pulse power supply modules at the market.
+This mean that usage of LDO should be approved by some strong causes.
+
+6) Do not use cristals in your designs. Prefer to use generators.
+Too long to explain - just follow this rule.
+
+7) Avoid to create new components in your design. Do not inflate nomenclature.
+Try to utilize what already utilized in company. Look TOM's library.
+
+8) If you want to have some signs in silk - write it in your design directly.
+
+
+
+
